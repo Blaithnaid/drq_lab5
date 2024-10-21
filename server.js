@@ -13,9 +13,15 @@ app.get("/", (req, res) => {
   res.send("Welcome to Data Representation & Querying");
 });
 
+app.get("/hello/:name", (req, res) => {
+  const name = req.params.name;
+  res.send(`Hello ${name}`);
+});
+
 app.get("/hello/:name/:sname", (req, res) => {
-  // if our url route is /hello/:name, this will be displayed
-  res.send(req.params.name); // this will display the name that is inputted in the url
+  const name = req.params.name;
+  const sname = req.params.sname;
+  res.send(`Hello ${name} ${sname}`);
 });
 
 app.listen(port, () => {
