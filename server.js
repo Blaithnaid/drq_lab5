@@ -8,9 +8,13 @@ app.use((err, req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Welcome to Data Representation & Querying");
+});
+
+app.get("/hello/:name/:sname", (req, res) => {
+  res.send(req.params.name);
 });
 
 app.listen(port, () => {
-  console.log(`Server is running on https://localhost:${port}`);
+  console.log(`Server is running on http://localhost:${port}`);
 });
