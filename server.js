@@ -3,6 +3,9 @@ const path = require("path");
 const app = express();
 const port = 3000;
 
+// this is a middleware function that will log the request method and url to the console
+app.use(express.static("public"));
+
 app.use((err, req, res, next) => {
   // if there is an error, this will catch it and send a 500 status code
   console.error(err.stack);
@@ -15,21 +18,25 @@ app.get("/", (req, res) => {
 });
 
 app.get("/index", (req, res) => {
+  // if our route is /index, show index.html
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.get("/hello/:name", (req, res) => {
+  // :name is a parameter. we display it with 'Hello" when it's passed into /hello/(name).
   const name = req.params.name;
   res.send(`Hello ${name}`);
 });
 
 app.get("/hello/:name/:sname", (req, res) => {
+  // same as above but with two parameters
   const name = req.params.name;
   const sname = req.params.sname;
   res.send(`Hello ${name} ${sname}`);
 });
 
 app.get("/api/movies", (req, res) => {
+  // this is a mock api, returning the movies array from last week
   const movies = [
     {
       Title: "Avengers: Infinity War",
