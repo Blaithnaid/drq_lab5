@@ -1,12 +1,12 @@
 {
   "dependencies": {
+    "body-parser": "^1.20.3",
     "express": "^4.21.1"
   },
   "name": "drq_lab5",
   "version": "1.0.0",
   "description": "Express is a Node.js web app framework. It provides middleware features for defining routing, helping to run templates, and handle requests and responses.",
   "main": "server.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"

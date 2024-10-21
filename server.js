@@ -1,10 +1,14 @@
 const express = require("express");
 const path = require("path");
+const bodyParser = require("body-parser");
 const app = express();
 const port = 3000;
 
-// this is a middleware function that will log the request method and url to the console
+// this function is used to serve static files
 app.use(express.static("public"));
+
+// this function is used to parse the body of the request
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use((err, req, res, next) => {
   // if there is an error, this will catch it and send a 500 status code
@@ -20,6 +24,12 @@ app.get("/", (req, res) => {
 app.get("/index", (req, res) => {
   // if our route is /index, show index.html
   res.sendFile(path.join(__dirname, "index.html"));
+});
+
+app.get("/name", (req, res) => {
+  const firstname = req.query.firstname;
+  const lastname = req.query.lastname;
+  res.send(`Hello ${firstname} ${lastname}`);
 });
 
 app.get("/hello/:name", (req, res) => {
