@@ -26,7 +26,7 @@ app.get("/index", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.get("/name", (req, res) => {
+app.post("/name", (req, res) => {
   // this displays in the browser via a POST request
   const firstname = req.query.firstname;
   const lastname = req.query.lastname;
