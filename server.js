@@ -27,6 +27,7 @@ app.get("/index", (req, res) => {
 });
 
 app.get("/name", (req, res) => {
+  // this displays in the browser via a POST request
   const firstname = req.query.firstname;
   const lastname = req.query.lastname;
   res.send(`Hello ${firstname} ${lastname}`);
